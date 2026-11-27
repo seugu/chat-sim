@@ -7,14 +7,14 @@
     "verdict": null,
     "at_tip": null,
     "seated": 51,
-    "virtual_s": 7701.65,
+    "virtual_s": 6275.294,
     "trunk_epoch": 50,
     "first_fork": null,
-    "ended": "behind",
+    "ended": "whole",
     "lines_off_trunk": 0,
-    "members_off_trunk": 6,
+    "members_off_trunk": 3,
     "never_joined": 3,
-    "came_to": "the trunk reached epoch 50: trunk at epoch 50, 1 main, 0 sub, 32 fell behind, 3 behind at the end, 3 never joined",
+    "came_to": "the trunk reached epoch 50: trunk at epoch 50, 1 main, 0 sub, 0 fell behind, 0 behind at the end, 3 never joined",
     "stopped": null
   },
   {
@@ -25,14 +25,14 @@
     "verdict": null,
     "at_tip": null,
     "seated": 51,
-    "virtual_s": 7996.65,
+    "virtual_s": 6232.194,
     "trunk_epoch": 50,
     "first_fork": null,
-    "ended": "behind",
+    "ended": "whole",
     "lines_off_trunk": 0,
-    "members_off_trunk": 6,
+    "members_off_trunk": 2,
     "never_joined": 2,
-    "came_to": "the trunk reached epoch 50: trunk at epoch 50, 1 main, 0 sub, 35 fell behind, 4 behind at the end, 2 never joined",
+    "came_to": "the trunk reached epoch 50: trunk at epoch 50, 1 main, 0 sub, 0 fell behind, 0 behind at the end, 2 never joined",
     "stopped": null
   }
 ]

@@ -66,3 +66,8 @@ python3 tools/sim run tools/sim/scenarios/50-epochs.json --one-process target/re
 
 Licensed under either of [Apache License, Version 2.0](LICENSE-APACHE) or [MIT license](LICENSE-MIT)
 at your option.
+
+## Branch `sds-reliability-fixes`
+
+This branch runs logos-chat `a74ad35` with a GroupV3 delivery fix. See
+[DELIVERY-FIX.md](DELIVERY-FIX.md) for the results against `master` and how to reproduce them.
