@@ -102,6 +102,34 @@ git diff master -- tools/sim/expected    # what moved: "split" outcomes became "
 - `tools/sim/expected` on this branch holds the head's outcomes, so `compare` says `same` for every
   run. The `git diff` shows each `split at epoch N` of `master` that became `whole`.
 
+## Run your own variants
+
+A scenario is a plain JSON file, so copy one and change what you want to test. The
+[harness README](crates/harness/README.md#the-plan) documents every field. The ones that matter most
+here:
+
+| Field | Where | Example |
+|---|---|---|
+| Packet loss | `network.loss`, `network.welcome_loss` | `0.02` for 2% |
+| Per-member one-way delay | `network.delay_ms` | `{"saro": 900, ...}` |
+| Concurrent committers per round | `steps[0].adders` | `5` |
+| Target length | `steps[0].epochs` | `100` |
+| Pool size | `members` | `300` |
+| Network randomness | `network.seed` | any whole number |
+
+Then sweep the file with both runners and compare:
+
+```sh
+cp tools/sim/scenarios/grow-waku-loss-1-groupv3.json /tmp/my-grow.json   # then edit it
+python3 tools/sim sweep /tmp/my-grow.json --runs 10 --one-process /tmp/harness-base --out tmp/base-custom/my-grow
+python3 tools/sim sweep /tmp/my-grow.json --runs 10 --one-process /tmp/harness-head --out tmp/head-custom/my-grow
+python3 tools/sim matrix tmp/head-custom --base tmp/base-custom --out tmp/matrix-custom.json
+```
+
+The `came_to` line of each run shows `1 main, 0 sub` when the group stayed whole. A plan can also
+cut members off from each other (`cut`, `heal`) or let time pass (`hold`). These are the way to
+probe the limit below. We have not run such a plan with this change.
+
 ## Limits
 
 - Agreement still rests on the 120 s timer. The change makes forks rare in these scenarios; it does
